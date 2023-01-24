@@ -1,15 +1,21 @@
+import { Provider } from 'react-redux';
+import store from './app/store';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HomePage } from './pages/HomePage';
 import './App.scss';
-import { Container } from '@mui/material';
-import { FilterInput } from './components/SearchBar';
-import { ArticlesList } from './components/ArticlesList';
+import { ArticleDetails } from './components/ArticleDetails';
 
 function App() {
   return (
     <div className="App">
-      <Container>
-        <FilterInput />
-        <ArticlesList />
-      </Container>
+      <BrowserRouter>
+        <Provider store={store}>
+          <Routes>
+            <Route path="/articles/:id" element={<ArticleDetails />} />
+            <Route path="/" element={<HomePage />} />
+          </Routes>
+        </Provider>  
+      </BrowserRouter>
     </div>
   )
 };

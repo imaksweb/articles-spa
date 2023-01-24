@@ -2,7 +2,9 @@ import { FC, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import * as articlesActions from '../../features/articles';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
-import { Article } from './Article/Article';
+import { Alert } from '@mui/material';
+import { ArticleItem } from './ArticleItem/ArticleItem';
+import { Loader } from '../Loader';
 
 export const ArticlesList: FC = () => {
   const dispatch = useAppDispatch();
@@ -11,11 +13,21 @@ export const ArticlesList: FC = () => {
   useEffect(() => {
     dispatch(articlesActions.init());
   }, []);
+
+  console.log(articles);
   
+  if (loading) {
+    return <Loader />
+  }
+
+  if (error) {
+    return <Alert severity="error">{error}</Alert>
+  }
+
   return (
     <Grid2 container spacing={6} >
       {articles.map(article => (
-        <Article />
+        <ArticleItem key={article.id} article={article} />
       ))}
     </Grid2>
   )
