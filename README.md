@@ -12,6 +12,9 @@ This is an adaptive SPA with the bunch of articles fetched from [Spaceflight New
 * SASS(SCSS)
 * Vite
 
+### Dependencies
+* Node version `18.12.1` or higher
+* NPM version `8.19.2` or higher
 
 ### Installing
 * Fork and clone this repository
