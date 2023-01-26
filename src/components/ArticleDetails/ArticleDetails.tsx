@@ -6,6 +6,7 @@ import { Article } from '../../types/Article';
 import { getArticle } from '../../api/articles';
 import { Loader } from '../Loader';
 import { Alert } from '@mui/material';
+import './ArticleDetails.scss';
 
 export const ArticleDetails: FC = () => { 
   const [currentArticle, setCurrentArticle] = useState<Article | null>(null);
@@ -47,8 +48,10 @@ export const ArticleDetails: FC = () => {
             <Button
               size="small"
               sx={{
+                fontSize: '16px',
+                fontWeight: '700',
+                color: '#000',
                 textTransform: 'none',
-                color: '#000'
               }}
             >
               <KeyboardBackspaceIcon />
@@ -68,7 +71,7 @@ export const ArticleDetails: FC = () => {
         alt="test123"
       />
       <Container>
-        <Box sx={{ translate: '0 -100px' }}>
+        <Box sx={{ translate: '0 -100px' }} className='ArticleDetails'>
           <Paper sx={{ padding: '35px 75px', mb: '35px' }}>
             <Typography align='center' variant='h5' component='h1' sx={{ mb: '50px' }}>
               { currentArticle?.title }
@@ -81,8 +84,10 @@ export const ArticleDetails: FC = () => {
             <Button
               size="small"
               sx={{
+                fontSize: '16px',
+                fontWeight: '700',
+                color: '#000',
                 textTransform: 'none',
-                color: '#000'
               }}
             >
               <KeyboardBackspaceIcon />

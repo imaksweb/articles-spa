@@ -8,13 +8,11 @@ import { Loader } from '../Loader';
 
 export const ArticlesList: FC = () => {
   const dispatch = useAppDispatch();
-  const { articles, loading, error } = useAppSelector(state => state.articles);
+  const { articles, loading, error, searchWords } = useAppSelector(state => state.articles);
   
   useEffect(() => {
     dispatch(articlesActions.init());
   }, []);
-
-  console.log(articles);
   
   if (loading) {
     return <Loader />
@@ -27,7 +25,11 @@ export const ArticlesList: FC = () => {
   return (
     <Grid2 container spacing={6} >
       {articles.map(article => (
-        <ArticleItem key={article.id} article={article} />
+        <ArticleItem
+          key={article.id}
+          article={article}
+          searchWords={searchWords}
+        />
       ))}
     </Grid2>
   )
